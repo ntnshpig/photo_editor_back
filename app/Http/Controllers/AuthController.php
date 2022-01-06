@@ -103,20 +103,10 @@ class AuthController extends Controller
     if ($user = Auth::guard()->attempt($request->only('email', 'password'))) {
         $user = User::where('email', $request->email)->first();
 
-            $tokens = \DB::select("SELECT amocrm_tokens.access_token, getcourse_tokens.getcourse_token, bizon_tokens.bizon_token
-                 FROM users
-                 LEFT JOIN amocrm_tokens on users.id = amocrm_tokens.user_id 
-                 LEFT JOIN getcourse_tokens on users.id = getcourse_tokens.user_id
-                 LEFT JOIN bizon_tokens on users.id = bizon_tokens.user_id
-                 WHERE users.id = '$user->id'
-                 ORDER BY amocrm_tokens.access_token
-                 ");
-
             $request->session()->regenerate();
 
             return response([
-                "user" => $user,
-                'tokens' => $tokens
+                "user" => $user
             ], 200);
         }
 
