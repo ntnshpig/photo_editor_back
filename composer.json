@@ -33,6 +33,10 @@
         }
     },
     "scripts": {
+        "compile": [
+            "@php app/console assetic:dump --env=prod --no-debug",
+            "MyVendor\\MyClass::postDeployComposerCallback"
+        ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"
@@ -53,6 +57,9 @@
         }
     },
     "config": {
+        "platform": {
+            "php": "7.1"
+        },
         "optimize-autoloader": true,
         "preferred-install": "dist",
         "sort-packages": true
