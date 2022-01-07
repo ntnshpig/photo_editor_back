@@ -59,4 +59,15 @@ class UserController extends Controller
             ], 400);
         }
     }
+    public function sent_user_info(Request $request)
+    {
+        $user = $request->user();
+        return response([
+            'data' => \DB::select('SELECT users.id, users.email, users.name, users.role
+            FROM users
+            WHERE users.id = ' . $user->id . '
+            ORDER BY users.id
+        ')
+        ], 200);
+    }
 }
