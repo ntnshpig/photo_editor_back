@@ -44,7 +44,7 @@ class AuthController extends Controller
         ]);
         $tokenData = \DB::table('email_confirmations')->where('email', $user->email)->first();
 
-        $link = 'http://localhost:3000/user/email_confirmation/' . $tokenData->token;
+        $link = 'https://niwebster.com/user/email_confirmation/' . $tokenData->token;
 
         $data = [
             'login' => $user->name,
@@ -135,7 +135,7 @@ class AuthController extends Controller
         ]);
         $tokenData = \DB::table('password_resets')->where('email', $user->email)->first();
 
-        $link = 'http://localhost:3000/new_password/' . $tokenData->token;
+        $link = 'https://niwebster.com/new_password/' . $tokenData->token;
 
         $data = [
             'login' => $user->name,
