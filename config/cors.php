@@ -19,7 +19,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['https://webster-a47d3.web.app'],
+    'allowed_origins' => ['https://niwebster.com'],
 
     'allowed_origins_patterns' => [],
 
